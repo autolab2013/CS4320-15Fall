@@ -1,0 +1,32 @@
+This file contains the SQL CREATE statements for the tables in questions 1 and 2, to allow you to paste them in directly and minimize format errors.
+
+Question 1:
+-------------
+
+CREATE TABLE Student (sid INTEGER PRIMARY KEY,
+                      sname VARCHAR(20));
+CREATE TABLE CourseOffering (cid INTEGER NOT NULL,
+                             semesterid INTEGER NOT NULL,
+                             profid INTEGER,
+                             roomid INTEGER,
+                             PRIMARY key (cid, semesterid));
+CREATE TABLE Enrolled (sid INTEGER NOT NULL,
+                       cid INTEGER NOT NULL,
+                       semesterid INTEGER NOT NULL,
+                       grade INTEGER,
+                       PRIMARY KEY (sid, cid, semesterid));
+
+Question 2:
+-------------
+CREATE TABLE Ships (name VARCHAR(20) PRIMARY KEY, 
+                    launched DATE);
+
+CREATE TABLE Battles (name VARCHAR(20) PRIMARY KEY, 
+                      battledate DATE);
+
+CREATE TABLE Outcomes (shipname VARCHAR(20), 
+                       battlename VARCHAR(20), 
+                       result VARCHAR(20),
+                       FOREIGN KEY (shipname) REFERENCES Ships (name),
+                       FOREIGN KEY (battlename) REFERENCES Battles (name),
+                       PRIMARY KEY (shipname, battlename));
