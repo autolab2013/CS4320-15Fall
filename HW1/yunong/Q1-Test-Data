@@ -1,0 +1,79 @@
+a) find highest enrollment : insert different number of sids into cid:
+- top 10 sid for cid 1
+- top 10 for cid 5
+- top 10 for cid 6
+- 9 for cid 2
+- 7 for cid 3
+- 6 for cid 4
+
+SQL:
+
+Student:
+INSERT INTO `Student` (`sid`,`sname`) VALUES (1, "student1");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (2, "student2");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (3, "student3");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (4, "student4");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (5, "student5");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (6, "student6");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (7, "student7");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (8, "student8");
+INSERT INTO `Student` (`sid`,`sname`) VALUES (9, "student9");
+
+CourseOffering:
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (1, 1, 1, 1);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (1, 2, 1, 1);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (2, 1, 1, 2);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (3, 1, 1, 3);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (4, 1, 1, 4);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (4, 2, 1, 4);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (5, 1, 1, 5);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (5, 2, 1, 1);
+INSERT INTO `CourseOffering` (`cid`,`semesterid`, `profid`, `roomid`) VALUES (6, 1, 1, 6);
+
+Enrolled:
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (1, 1, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (1, 2, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (1, 3, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (2, 4, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (2, 4, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (3, 1, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (3, 2, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (4, 5, 2, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (5, 1, 2, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (5, 1, 1, 20);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (5, 6, 2, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (6, 4, 2, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (7, 4, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (8, 1, 1, 20);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (8, 2, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (8, 3, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (8, 4, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (9, 1, 1, 10);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (9, 2, 1, 100);
+INSERT INTO `Enrolled` (`sid`, `cid`,`semesterid`, `grade`) VALUES (9, 3, 1, 100);
+
+b) sids with no cid in common:
+- sid 1 take cid 1 2 3 in ssid 1
+- sid 2 take 4 in ssid 1
+- sid 3 take 1 2 in ssid 1
+- sid 4 take 5 in ssid 2
+- sid 5 take 1 6 in ssid 2
+- sid 6 take 4 in ssid 2
+
+c) sid with exact same course, ssid not matter:
+- sid 6 take cid 4
+- sid 7 take cid 4
+- sid 8 take 1 2 3 4
+- sid 9 take 1 2 3
+
+d) sid with highest grade for every course, every semester
+- sid 1 in cid 1 ssid 1, grade 100
+- sid 1 in cid 2 ssid 1, grade 100
+- sid 1 in cid 3 ssid 1, grade 100
+- sid 2 in cid 4 ssid 1, grade 100
+- sid 2 in cid 4 ssid 2, grade 100
+- sid 5 in cid 1 ssid 1, grade 100
+- sid 5 in cid 1 ssid 2, grade 20
+- sid 5 in cid 6, grade 100
+- sid 9 in cid 1, grade 10
+- sid 8 in cid 1, grade 20

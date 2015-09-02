@@ -18,14 +18,14 @@ CREATE TABLE Enrolled (sid INTEGER NOT NULL,
 
 Question 2:
 -------------
-CREATE TABLE Ships (name VARCHAR(20) PRIMARY KEY, 
+CREATE TABLE Ships (name VARCHAR(20) PRIMARY KEY,
                     launched DATE);
 
-CREATE TABLE Battles (name VARCHAR(20) PRIMARY KEY, 
+CREATE TABLE Battles (name VARCHAR(20) PRIMARY KEY,
                       battledate DATE);
 
-CREATE TABLE Outcomes (shipname VARCHAR(20), 
-                       battlename VARCHAR(20), 
+CREATE TABLE Outcomes (shipname VARCHAR(20),
+                       battlename VARCHAR(20),
                        result VARCHAR(20),
                        FOREIGN KEY (shipname) REFERENCES Ships (name),
                        FOREIGN KEY (battlename) REFERENCES Battles (name),

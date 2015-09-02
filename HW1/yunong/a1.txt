@@ -1,0 +1,3 @@
+Question 1: for MySQL SQL queries
+(a)
+(b)
